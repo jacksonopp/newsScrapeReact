@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const database = "test" //database name
+const database = "newsScrape" //database name
 
 const MONGODB_URI = process.env.MONGODB_URI || `mongodb://localhost/${database}`
 

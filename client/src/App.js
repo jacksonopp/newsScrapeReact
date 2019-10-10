@@ -6,7 +6,7 @@ import Button from "react-bootstrap/Button";
 
 export default function App() {
   useEffect(() => {
-    request.get("/test")
+    request.get("/api/articles")
       .then(res => {
         console.log("res:", res);
         console.log("res.body:", res.body);
