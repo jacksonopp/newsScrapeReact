@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import "./App.css";
 import request from "superagent";
 import { Container } from "react-bootstrap";
-import ArticleListItem from "./components/Article";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import ArticleListItem from "./components/ArticleListItem";
+import { BrowserRouter as Router, Switch, Route, useParams } from "react-router-dom";
 
 
 export default function App() {
@@ -32,12 +32,17 @@ export default function App() {
               />
             ))}
             </Route>
-            <Route exact path="/:id">
-
+            <Route path="/:id">
+              <Id />
             </Route>
           </Container>
         </Switch>
       </Router>
     </>
   );
+}
+
+function Id() {
+  let { id } = useParams();
+  return <h3>requested id: {id}</h3>
 }
