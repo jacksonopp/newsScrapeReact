@@ -3,8 +3,11 @@ const request = require("superagent");
 
 module.exports = async function (url) {
     const response = await request.get(url)
-    var $ = cheerio.load(response.body);
+    // console.log(")@#(*$&@)#*(&$@)#(*$&@)#(*$&@#)(*$&@#)(*&$", response.text);
+    var $ = cheerio.load(response.text);
     var results = [];
+    console.log($);
+    console.log($("div.thing").length);
 
     $("div.thing").each(function (i, element) {
         const title = $(element).find("a.title").text();

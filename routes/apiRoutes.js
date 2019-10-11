@@ -51,6 +51,7 @@ module.exports = function (app) {
 				if (err) throw err;
 			})
 		})
-		res.send("done");
+		console.log(data);
+		res.send(data);
 	})
 }

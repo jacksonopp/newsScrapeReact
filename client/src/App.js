@@ -19,7 +19,9 @@ export default function App() {
   }, [])
   useEffect(() => {
     request.get("/api/scrape")
-      .then(res => console.log(res))
+      .then(res => {
+        console.log(res)
+      })
   }, [])
   return (
     <>
