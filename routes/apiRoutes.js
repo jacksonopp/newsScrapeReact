@@ -1,4 +1,6 @@
 const db = require("../models");
+const scrape = require("../functions/scrape");
+
 module.exports = function (app) {
 	app.get("/api/articles", (req, res) => {
 		db.Article.find({ upvotes: { $gte: 100 } })
@@ -28,5 +30,27 @@ module.exports = function (app) {
 				res.json(dbArticle)
 			})
 			.catch(err => res.send(err))
+	})
+	app.get("/api/scrape", async function (req, res) {
+		const url = "https://old.reddit.com/r/news"
+		const data = await scrape(url);
+		data.forEach(post => {
+			db.Article.findOneAndUpdate({
+				title: post.title,
+			}, {
+				title: post.title,
+				url: post.url,
+				sub: post.sub,
+				time: post.time,
+				upvotes: post.upvotes,
+				user: post.user
+			}, {
+				new: true,
+				upsert: true
+			}, (err) => {
+				if (err) throw err;
+			})
+		})
+		res.send("done");
 	})
 }

@@ -17,6 +17,10 @@ export default function App() {
       })
       .catch(err => console.log(err));
   }, [])
+  useEffect(() => {
+    request.get("/api/scrape")
+      .then(res => console.log(res))
+  }, [])
   return (
     <>
       <Router>
