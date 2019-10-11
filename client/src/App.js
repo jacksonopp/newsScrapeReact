@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
 import request from "superagent";
-import { Container } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 import { BrowserRouter as Router, Switch, Route, useParams } from "react-router-dom";
 
 import ArticleListItem from "./components/ArticleListItem";
@@ -22,17 +22,21 @@ export default function App() {
       <Router>
         <Switch>
           <Container>
-            <Route exact path="/">{articles.map(article => (
-              <ArticleListItem
-                title={article.title}
-                upvotes={article.upvotes}
-                user={article.user}
-                url={article.url}
-                time={article.time}
-                id={article._id}
-              />
-            ))}
-            </Route>
+            <Row>
+              <Col sm md={{ span: 9, offset: 1 }}>
+                <Route exact path="/">{articles.map(article => (
+                  <ArticleListItem
+                    title={article.title}
+                    upvotes={article.upvotes}
+                    user={article.user}
+                    url={article.url}
+                    time={article.time}
+                    id={article._id}
+                  />
+                ))}
+                </Route>
+              </Col>
+            </Row>
             <Route path="/:id">
               <Id />
             </Route>
