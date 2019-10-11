@@ -17,4 +17,15 @@ module.exports = function (app) {
                 res.json(data);
             })
     })
+    app.post("/api/articles", (req, res) => {
+        console.log(req.body);
+        db.Comment.create(req.body)
+            .then(function (dbComment) {
+                return db.Article.findOneAndUpdate({ _id: req.body.id }, { $push: { comments: dbComment._id } }, { new: true });
+            })
+            .then(function (dbArticle) {
+                res.json(dbArticle)
+            })
+            .catch(err => res.send(err))
+    })
 }
