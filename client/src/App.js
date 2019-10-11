@@ -2,9 +2,10 @@ import React, { useEffect, useState } from "react";
 import "./App.css";
 import request from "superagent";
 import { Container } from "react-bootstrap";
-import ArticleListItem from "./components/ArticleListItem";
 import { BrowserRouter as Router, Switch, Route, useParams } from "react-router-dom";
 
+import ArticleListItem from "./components/ArticleListItem";
+import Article from "./components/Aritcle";
 
 export default function App() {
   const [articles, setArticles] = useState([])
@@ -44,5 +45,5 @@ export default function App() {
 
 function Id() {
   let { id } = useParams();
-  return <h3>requested id: {id}</h3>
+  return <Article id={id} />
 }
