@@ -52,25 +52,14 @@ project
     |   article.js - this is the mongoose schema for our article documents
     |   comment.js - this is the mongoose schema for our comments
 
-└───public
-    └───css
-    └───js
-        |   scrapeAdd.js - this contains a single axios request that scrapes reddit and adds the articles to the database
-        |   submitComment.js - this contains the logic for adding comments below the articles
-
 └───routes
     │   apiRoutes.js - this contains all of the routing information for API requests
     │   htmlRoutes.js - this contains all of the routing information for HTML requests
 
-└───scrape
+└───functions
     |   scrape.js - this contains the function that scrapes reddit and returns the results to later get added to the database
 
-└───views
-    │   index.handlebars - this contains the main page with all the articles
-    |   article.handlebars - this contians the page for viewing articles and comments
-    |   reddit.handlebars - this is a test page used for development
-    └───layouts
-        |   main.handlebars - this is the main handlebars layout page
+└───client - this folder contains all of the react-components
 
 
 ```
